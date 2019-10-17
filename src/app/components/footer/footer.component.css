@@ -2,10 +2,10 @@
     background-color: #ececec;
 }
 .footer-copyright{
-    background-color: #252525;
-    color: #444 !important;
+    background-color: #616161;
+    color: rgb(243, 243, 243) !important;
     font-weight: 400;
 }
 .footer-content{
-    color: #444;
+    color: rgb(156, 156, 156);
 }

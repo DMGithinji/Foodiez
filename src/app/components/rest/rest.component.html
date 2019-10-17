@@ -15,11 +15,11 @@
     <li class="nav-item col-md-4">
       <a class="nav-link" routerLink="#" (click) ="Reviews()">Reviews</a>
     </li>
-    <li class="nav-item col-md-4">
+    <!-- <li class="nav-item col-md-4">
       <a class="nav-link" routerLink="#" (click) ="Recipe()">Recipe</a>
-    </li>
+    </li> -->
   </ul>
-  <div  *ngIf = " hideRs" class="navbar nav2 navbar-expand-sm navbar-light bg-light menu-stuff">
+  <div  *ngIf = " hideRs" class="navbar nav2 navbar-expand-sm menu-stuff">
     <ul class="navbar-nav row">
       <!-- to be displayed when user is not logged in-->
       <li class="nav-item col-md-4">
@@ -36,7 +36,7 @@
 </div>
 
 <!--Beginning of menu-->
-<div *ngIf = " hideRs " class="container jumbotron menu menu-stuff">
+<div *ngIf = " hideRs " class="container jumbotron menu menu-stuff2">
   <section id="breakfast">
     <h3 class='text-center'>Breakfast</h3>
     <div *ngFor="let food of menus" class="food-item">

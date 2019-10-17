@@ -32,10 +32,14 @@ h3:after {
   margin: 12px auto 20px;
 }
 
+.menu-stuff {
+  background: rgb(42, 42, 42);
+  color: rgb(194, 194, 194);
+}
 
 .menu-stuff h3:after {
   content: '';
-  background: rgb(83, 74, 73);
+  background: rgb(44, 44, 44);
   display: block;
   height: 1px;
   width: 10%;
@@ -108,4 +112,28 @@ h4:after {
 .nav-main .nav-item{
   padding-left: 50px;
   margin: 0 auto;
+}
+
+.menu-stuff{
+  background-color: rgb(72, 73, 75, 0.8) !important;  
+  /* border-radius: 10px; */
+
+}
+.menu-stuff a{
+  color: #fff !important;
+  font-weight: 600;
+
+}
+
+.menu-stuff2{
+  background-color: rgba(255, 255, 255, 0.4) !important;  
+  border: solid 2px rgb(72, 73, 75, 0.8);
+  border-radius: 10px;
+  margin-top: -10px;
+
+}
+.menu-stuff a{
+  color: #fff !important;
+  font-weight: 600;
+
 }
