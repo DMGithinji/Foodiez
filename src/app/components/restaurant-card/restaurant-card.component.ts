@@ -21,7 +21,8 @@ export class RestaurantCardComponent implements OnInit {
 
   restaurant = [];
 
-  rest
+  rest: any[];
+  filteredRestaurants: any[];
   restrnts
   locations=[]
   locationSet;
@@ -44,7 +45,8 @@ export class RestaurantCardComponent implements OnInit {
         res => this.restaurant.push(res);
         if(res){
           this.rest = this.restaurant[0].data;
-          this.restrnts = this.rest;        
+          this.restrnts = this.rest;   
+          console.log(this.restrnts);     
         }
       },
         err => console.log(err)
@@ -53,17 +55,17 @@ export class RestaurantCardComponent implements OnInit {
 
   getRest() {
     this.restrnts = this.restaurant[0].data;
-    // for (var i =0; i<this.rest.length; i++){
-    //   this.locations.push(this.rest[i].location);
-    // }
-    // this.locationSet = new Set(this.locations);
     console.log(this.restrnts);
-    // this.locationSet.forEach(function(item){
-    //       this.locations.push(item)
-    //   });
-    //   console.log("List");
-    //   console.log(this.locations);
+    
   }
+
+
+  filterByLocation(location) {
+    this.filteredRestaurants = this.restrnts.filter(resto => resto.location === location );
+    this.restrnts;
+    console.log(this.filteredRestaurants);
+}
+
 
 
 }
