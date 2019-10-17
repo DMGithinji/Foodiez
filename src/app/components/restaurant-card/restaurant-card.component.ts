@@ -24,38 +24,46 @@ export class RestaurantCardComponent implements OnInit {
   rest
   restrnts
   locations=[]
-  locationSet
+  locationSet;
+  restaurants;
 
 
   ngOnInit() {
-    // console.log(this.restaurant);
     this._restaurant.getRestaurant()
       .subscribe(
         res => this.restaurant.push(res),
         err => console.log(err)
       );
+      this.loadRestaurants();
 
-    this.route.paramMap
-      .subscribe(params => {
-        console.log(params);
-      });
+  }
+
+  loadRestaurants = () =>{
+    this._restaurant.getRestaurant()
+      .subscribe((res:any[])=> {
+        res => this.restaurant.push(res);
+        if(res){
+          this.rest = this.restaurant[0].data;
+          this.restrnts = this.rest;        
+        }
+      },
+        err => console.log(err)
+      );
   }
 
   getRest() {
-    this.rest = this.restaurant[0].data;
-    console.log(this.restaurant[0].data);
-    this.restrnts = this.rest.slice(1, 6);
-    console.log(this.restrnts)
-    for (var i =0; i<this.rest.length; i++){
-      this.locations.push(this.rest[i].location);
-    }
-    this.locationSet = new Set(this.locations);
-    console.log(this.locationSet);
-    this.locationSet.forEach(function(item){
-          this.locations.push(item)
-      });
-      console.log("List");
-      console.log(this.locations);
-
+    this.restrnts = this.restaurant[0].data;
+    // for (var i =0; i<this.rest.length; i++){
+    //   this.locations.push(this.rest[i].location);
+    // }
+    // this.locationSet = new Set(this.locations);
+    console.log(this.restrnts);
+    // this.locationSet.forEach(function(item){
+    //       this.locations.push(item)
+    //   });
+    //   console.log("List");
+    //   console.log(this.locations);
   }
+
+
 }
