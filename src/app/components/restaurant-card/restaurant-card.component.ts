@@ -27,19 +27,17 @@ export class RestaurantCardComponent implements OnInit {
   restrnts
   restaurants: any[];
 
-
   ngOnInit() {
-    this._restaurant.getRestaurant()
+    this._restaurant.getRestaurants()
       .subscribe(
         res => this.restaurant.push(res),
         err => console.log(err)
       );
       this.loadRestaurants();
-
   }
 
   loadRestaurants = () =>{
-    this._restaurant.getRestaurant()
+    this._restaurant.getRestaurants()
       .subscribe((res:[])=> {
         res => this.restaurant.push(res);
         if(res){
@@ -61,13 +59,11 @@ export class RestaurantCardComponent implements OnInit {
     
   }
 
-
   filterByLocation(location) {
     this.getRest()
     this.filteredRestaurants = this.restrnts.filter(resto => resto.location === location );
     this.restrnts = this.filteredRestaurants;
     console.log(this.filteredRestaurants);
-
 }
 
 }

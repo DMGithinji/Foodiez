@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 
-
 import { HomeComponent } from './components/home/home.component';
-import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 import { RestComponent } from './components/rest/rest.component';
 import { MyordersComponent } from './components/myorders/myorders.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,7 +17,6 @@ import { RestaurantCardComponent } from './components/restaurant-card/restaurant
 import { FooterComponent } from './components/footer/footer.component';
 import { RestaurantService } from './services/rests/restaurant.service';
 import { LocationRestaurantService } from './services/rests/location-restaurant.service';
-import { RestLocationComponent } from './components/rest-location/rest-location.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 
 const routes: Routes = [
@@ -31,9 +28,6 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent},
-  {
-    path: 'restaurant-list/:location',
-    component: RestaurantsComponent},
   {
     path: 'restaurant/:id',
     component: RestComponent},
@@ -70,10 +64,7 @@ const routes: Routes = [
     path: 'super-admin',
     component: SuperAdminComponent,
     canActivate: [AuthGuard]},
-  {
-    path: 'restaurant/location/:name',
-    component: RestLocationComponent,
-    canActivate: [AuthGuard]}
+
 ];
 
 @NgModule({

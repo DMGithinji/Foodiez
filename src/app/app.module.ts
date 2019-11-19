@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 import { RestComponent } from './components/rest/rest.component';
 import { MyordersComponent } from './components/myorders/myorders.component';
 import { LoginComponent } from './components/login/login.component';
@@ -22,7 +21,6 @@ import { RestaurantCardComponent } from './components/restaurant-card/restaurant
 import { FooterComponent } from './components/footer/footer.component';
 import { RestaurantService } from './services/rests/restaurant.service';
 import { LocationRestaurantService } from './services/rests/location-restaurant.service';
-import { RestLocationComponent } from './components/rest-location/rest-location.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 
 import { MenuserviceService } from './services/menuservice.service'
@@ -36,7 +34,6 @@ import { TokenInterceptorService } from './services/tokeninterceptor.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    RestaurantsComponent,
     RestComponent,
     MyordersComponent,
     LoginComponent,
@@ -49,7 +46,6 @@ import { TokenInterceptorService } from './services/tokeninterceptor.service';
     SuperAdminComponent,
     RestaurantCardComponent,
     FooterComponent,
-    RestLocationComponent,
     ReviewsComponent
 
   ],

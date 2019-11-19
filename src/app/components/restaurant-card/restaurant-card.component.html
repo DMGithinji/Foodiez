@@ -1,11 +1,18 @@
 <div class="container-fluid">
 
   <div class="moreHeader row">
+    
     <div class="col-md-12" >
-        <div class="d-flex flex-row justify-content-center bd-highlight mb-3">
-            <button class="m-2 btn btn-light  bd-highlight" (click)=getRest()>All Restaurants</button>
+        <div class="d-flex align-items-center" *ngIf="!filteredLocations"> 
+            <strong>Loading...</strong>
+            <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+          </div>
+        <div class="d-flex flex-row bd-highlight mb-3">
+            <div>
+              <span class="mr-2 badge badge-pill badge-primary"  (click)=getRest() *ngIf="filteredLocations">All Restaurants</span>
+            </div>
             <div  *ngFor="let location of filteredLocations">
-            <button class="m-2 btn btn-light  bd-highlight" (click)=filterByLocation(location)>{{location}}</button>
+              <span class="mr-2 badge badge-pill badge-primary" (click)=filterByLocation(location)>{{location}}</span>
             </div>
           </div>
 

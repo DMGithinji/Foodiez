@@ -8,7 +8,7 @@ export class LocationRestaurantService {
 
   private _restaurantUrl = 'https://foodiesapp.herokuapp.com/api/restaurant';
   constructor(private http: HttpClient) { }
-  getRestaurant() {
+  getRestaurants() {
     return this.http.get<any>(this._restaurantUrl);
   }
 }
