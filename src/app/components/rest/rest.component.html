@@ -32,7 +32,6 @@
             <div *ngIf=" hideRs " class="container jumbotron menu menu-stuff2">
               <section id="popular" class="module">
                 <div class="container-fluid">
-                  <!-- <button type="button" name="" id="add" class="btn btn-white"><a [routerLink]="['/foodcart', { id:food.id }]">Add</a></button> -->
                   <h3 class="module-title mt-3 text-center">Breakfast Cuisines</h3>
       
                   <div *ngFor="let item of breakfast">
@@ -45,7 +44,7 @@
                           </div>
                           <div class="col-sm-2 menu-price-detail">
                             <h4 class="menu-price">Ksh {{item.price}}</h4>
-                            <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i>
+                            <!-- <i class="material-icons" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i> -->
                           </div>
                         </div>
                       </div>
@@ -64,8 +63,7 @@
                           </div>
                           <div class="col-sm-2 menu-price-detail">
                             <h4 class="menu-price">Ksh {{item.price}}</h4>
-                            <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i>
-      
+                            <!-- <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i> -->
                           </div>
                         </div>
                       </div>
@@ -82,7 +80,7 @@
                           </div>
                           <div class="col-sm-2 menu-price-detail">
                             <h4 class="menu-price">Ksh {{item.price}}</h4>
-                            <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i>
+                            <!-- <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i> -->
                           </div>
                         </div>
                       </div>
@@ -95,47 +93,73 @@
             <!--End of menu-->
             
             <!--Beginning of Reviews-->
-            <div *ngIf="hideMR1" class=" container jumbotron menu menu-stuff2">
-              <div class="review" style="margin-bottom: 60px;">
-                <!-- <div class="form-group shadow-textarea">
-                  <h3 class="module-title mt-3 text-center">We would love to hear your feedback!</h3>
-                  <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"
-                    placeholder="Write review here..."></textarea>
-                </div> -->
+            <div *ngIf="hideMR1" class="container jumbotron menu menu-stuff2">
+             <div class="review-stuff">
+                <div class="review" style="margin-bottom: 60px;">
+                    <h3 class="module-title mt-3 text-center">We would love to hear your feedback!</h3>
+                    <form [formGroup]="reviewForm" autocomplete="off" novalidate (ngSubmit)="createReview(reviewForm.value)">
+                    <textarea class="form-control z-depth-1" rows="3" placeholder="Write your feedback here..." formControlName="review" id="review"></textarea>
+                    
+                    <h4 class="module-title mt-4">Give us a rating</h4>
+                    <div class="star-rating">
+                      <input type="radio" name="rating">
+                      <label for="star-5" title="5 stars">
+                          <i class="active fa fa-star" aria-hidden="true" (click)="rate(5)" [class.my-class]="rating==5"></i>
+                      </label>
+                      <input type="radio" name="rating" formControlName="rating" id="rating">
+                      <label for="star-4" title="4 stars">
+                          <i class="active fa fa-star" aria-hidden="true" (click)="rate(4)" [ngClass]="{'my-class': rating > 3 }"></i>
+                      </label>
+                      <input type="radio" name="rating" formControlName="rating" id="rating">
+                      <label for="star-3" title="3 stars">
+                          <i class="active fa fa-star" aria-hidden="true" (click)="rate(3)"  [ngClass]="{'my-class': rating > 2}"></i>
+                      </label>
+                      <input type="radio" name="rating" formControlName="rating" id="rating">
+                      <label for="star-2" title="2 stars">
+                          <i class="active fa fa-star" aria-hidden="true" (click)="rate(2)" [ngClass]="{'my-class': rating > 1}"></i>
+                      </label>
+                      <input type="radio" name="rating" formControlName="rating" id="rating">
+                      <label for="star-1" title="1 star">
+                          <i class="active fa fa-star" aria-hidden="true" (click)="rate(1)" [ngClass]="{'my-class': rating > 0}"></i>
+                      </label>
+                    </div>
+                    <div>
+                      <button type="submit" class="btn btn-dark" [disabled]="!reviewForm.valid">Submit</button>
+    
+                    </div>
+                    </form>
+                  </div>
+                  <div *ngFor="let review of reviews" class="food-item">
+                    <div class="card-body row">
+                      <!-- <h4 class="card-title col-md-9">{{review.user}}</h4> -->
                 
+                      <div>
+                          <p class="">{{review.review}}</p> 
+                      </div>
+                      <br>
+                      <hr class='accent-1 d-inline-block mx-auto'>
 
-                <form [formGroup]="reviewForm" autocomplete="off" novalidate (ngSubmit)="createReview(reviewForm.value)">
-                <textarea class="form-control z-depth-1" rows="3" placeholder="Write review here..." formControlName="review" id="review"></textarea>
-                <input type="number" formControlName="rating" id="rating">
-                <button type="submit" class="btn btn-dark" [disabled]="!reviewForm.valid">Submit</button>
-                </form>
-              </div>
-              <div *ngFor="let review of reviews" class="food-item">
-                <div class="card-body row">
-                  <h4 class="card-title col-md-9">{{review.user}}</h4>
-                  <p class="card-text col-md-3 text-right">{{review.posted}}</p>
-            
-                  <hr class='accent-1 d-inline-block mx-auto'>
-                  <p class="card-text col-md-9 text-left">{{review.review}}</p>
-                  <!-- <button type="button" name="" id="add" class="btn btn-white">Delete</button> -->
-                </div>
-                <hr>
-              </div>
+                      <i class="active fa fa-star" aria-hidden="true" [ngClass]="{'my-class': review.rating > 0}"></i>
+                      <i class="active fa fa-star" aria-hidden="true" [ngClass]="{'my-class': review.rating > 1}"></i>
+                      <i class="active fa fa-star" aria-hidden="true" [ngClass]="{'my-class': review.rating > 2}"></i>
+                      <i class="active fa fa-star" aria-hidden="true" [ngClass]="{'my-class': review.rating > 3}"></i>
+                      <i class="active fa fa-star" aria-hidden="true" [ngClass]="{'my-class': review.rating > 4}"></i>
+                      <!-- <button type="button" name="" id="add" class="btn btn-white">Delete</button> -->
+                    </div>
+
+                    <div class='d-flex justify-content-between'>
+                        <p class="card-text text-right">Posted on {{review.posted | date}}</p>
+                        <!-- <p class="card-text text-right">Posted by {{review.user_id}} on {{review.posted | date}}</p> -->
+                        <!-- <i class="material-icons delete" (click)="deleteReview(review.id)" *ngIf="review.user_id == user_id">delete</i> -->
+                    </div>
+
+                    <hr>
+                  </div>
+             </div>
             </div>
             <!--End of Reviews-->
-            
-            
-            <!--Beginning of Recipe-->
-            <div *ngIf="hideMR2" class="container jumbotron menu recipe-stuff">
-              <!-- <h4>{{recipe.recipeName}}</h4>
-                <hr>
-                <p>{{recipe.description}}</p> -->
-            </div>
-            <!--End of Recipe-->
+
       </div>
-      
-      
-      
-      
+
       <app-footer></app-footer>
 </div>

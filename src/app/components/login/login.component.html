@@ -1,29 +1,43 @@
 <body>
-<div class="container">
-
-
-<form class="form-signin">
-    <div class="form-label-group">
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address"[(ngModel)]="loginUserData.email" name="email"  required autofocus>
-    </div>
-
-    <div class="form-label-group">
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" [(ngModel)]="loginUserData.password_hash" name="password_hash"required>
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" (click)="loginUser()" type="button">Sign in</button>
-
-    <div class="text-center mb-3">
-        <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h5 mb-3 font-weight-normal">Don't have an account?</h1>
-        <p  class="h6 mb-3 font-weight-normal"><a routerLink="/sign-up">Sign Up.</a></p>
+  <main>
+    <section class="intro">
+      <h3 class="intro__header m-3">
+        Welcome to the Foodies App
+      </h3>
+      <p class="intro__par">
+        Where you can explore and share your culinary experiences from restaurant's in Nairobi with other foodies.
+      </p>
+    </section>
+    <section class="form mt-3">
+      <div class="form__container">
+        <form action="#">
+          <div class="form__group">
+            <input type="email" class="form__input" placeholder="email" id="inputEmail"
+              [(ngModel)]="loginUserData.email" name="email" required>
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="icon_error none">
+              <g fill="none" fill-rule="evenodd">
+                <circle fill="#FF7979" cx="12" cy="12" r="12" />
+                <rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1" />
+                <rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1" />
+              </g>
+            </svg>
+          </div>
+          <div class="form__group">
+            <input type="password" class="form__input" placeholder="password" id="inputPassword"
+              [(ngModel)]="loginUserData.password_hash" name="password_hash" required>
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="icon_error none">
+              <g fill="none" fill-rule="evenodd">
+                <circle fill="#FF7979" cx="12" cy="12" r="12" />
+                <rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1" />
+                <rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1" />
+              </g>
+            </svg>
+          </div>
+        </form>
+        <button class="form__btn--submit" (click)="loginUser()">Login</button>
+        <p class="h6 mb-3 font-weight-normal">Don't have an account?</p>
+        <p class="h5 mb-3 font-weight-normal"><a routerLink="/sign-up">Sign Up.</a></p>
       </div>
-    <p class="mt-5 mb-3 text-muted text-center">&copy; Foodiez | 2019</p>
-  </form>
-</div>
+    </section>
+  </main>
 </body>

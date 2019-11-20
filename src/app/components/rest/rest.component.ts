@@ -16,10 +16,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RestComponent implements OnInit {
   public id;
+  public rating: number = 0;
   public data: any;
   public restaurant: any;
   public infoData: any;
   public info: any;
+  public reviewsData: any;
+  public reviews: any;
   public foodsRes: any;
   public foods: any;
   public breakfast: any;
@@ -27,16 +30,9 @@ export class RestComponent implements OnInit {
   public supper: any;
   public menus: Menu[];
   public reviewForm: FormGroup;
+  private user_id = localStorage.getItem('user_id');
+  // private user = localStorage.getItem('user_id');
 
-
-
-  reviews = [
-    new Review(1, 'It was okay food', 3, '12:30pm 8/7/2019', 'Pizza Inn', 'Messi'),
-    new Review(2, 'It was okay rice', 4, '12:30pm 8/7/2019', 'Steers', 'Iniesta'),
-    new Review(3, 'It was okay pizza', 4, '12:30pm 8/7/2019', 'Debonairs', 'Mbappe'),
-    new Review(4, 'It was okay dawa', 2, '12:30pm 8/7/2019', 'Java', 'Lugaga'),
-    new Review(5, 'It was okay coffee', 1, '12:30pm 8/7/2019', 'Dormans', 'Rakitic')
-    ];
     hideRs = true;
     hideMR1 = false;
     hideMR2 = false;
@@ -67,6 +63,7 @@ export class RestComponent implements OnInit {
       this.getRestaurant( this.id);
       this.getRestaurantInfo( this.id);
       this.getRestaurantFoods( this.id);
+      this.getReviews(this.id);
       // console.log(this.restaurant)
       this.reviewForm = new FormGroup({
         review: new FormControl('', [Validators.required]),
@@ -79,7 +76,7 @@ export class RestComponent implements OnInit {
       .subscribe(res => {
             this.data = res;
             this.restaurant = this.data.data;
-            console.log(`restaurant- ${this.restaurant}`);
+            // console.log(`restaurant- ${this.restaurant}`);
           });
     }
 
@@ -88,7 +85,7 @@ export class RestComponent implements OnInit {
       .subscribe(res => {
         this.infoData = res;
         this.info = this.infoData.data[0];
-        console.log(`info- ${this.info}`);
+        // console.log(`info- ${this.info}`);
       });
     }
 
@@ -97,14 +94,27 @@ export class RestComponent implements OnInit {
       .subscribe(res => {
         this.foodsRes = res;
         this.foods = this.foodsRes.data;
-        console.log(`foods- ${this.foods}`);
+        // console.log(`foods- ${this.foods}`);
         this.breakfast = this.foods.filter(food => food.category.toLowerCase() === "breakfast");
         this.lunch = this.foods.filter(food => food.category.toLowerCase() === "lunch");
         this.supper = this.foods.filter(food => food.category.toLowerCase() === "dinner");
-        console.log(`breakfast - ${this.breakfast}`);
-        console.log(`lunch - ${this.lunch}`);
-        console.log(`supper - ${this.supper}`);
+        // console.log(`breakfast - ${this.breakfast}`);
+        // console.log(`lunch - ${this.lunch}`);
+        // console.log(`supper - ${this.supper}`);
       });
+    }
+
+    getReviews =(id)=>{
+      this._review.getReviews(id)
+      .subscribe(res => {
+        this.reviewsData = res;
+        this.reviews = this.reviewsData.data;
+        console.log(`reviews- ${this.reviews}`);
+      });
+    }
+    rate=(rating)=>{
+      this.rating = rating;
+      // console.log(this.rating);
     }
 
     public createReview = (reviewFormValue) => {
@@ -116,9 +126,9 @@ export class RestComponent implements OnInit {
     private postReview = (reviewFormValue)=>{
       let newReview = {
         restaurant_id: parseInt(this.id),
-        user_id: 1,
+        user_id: localStorage.getItem('user_id'),
         review: reviewFormValue.review,
-        rating: reviewFormValue.rating,
+        rating: this.rating,
         posted:  new Date()
       }
       console.log("The posted review is", newReview);
@@ -131,6 +141,19 @@ export class RestComponent implements OnInit {
         console.log(error);
       })
       );
+    }
+
+    deleteReview= (review_id) => {
+      this._review.deleteReview(review_id, this.user_id).subscribe(
+        res => {
+          this.getReviews(this.id);
+          alert("Review deleted successfully")
+        },
+        error => {
+          console.log(error);
+          alert("Oops, something went wrong")
+        }
+      ); 
     }
 }
 

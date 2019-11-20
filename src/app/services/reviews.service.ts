@@ -13,6 +13,9 @@ export class ReviewsService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
+
+
+  
   private generateHeaders() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -34,6 +37,17 @@ export class ReviewsService {
     };
     return this.http.post(this._restaurantUrl+'/'+restaurant_id+'/reviews', body, options);
   }
-  
 
+  getReviews(restaurant_id) {
+    return this.http.get<any>(this._restaurantUrl+'/'+restaurant_id+'/reviews');
+  }
+
+  deleteReview(restaurant_id, review_id) {
+    // const token = localStorage.getItem('token');
+    // const headers = new HttpHeaders({
+    //   'Authorization': 'Bearer ' + token
+    // }); 
+    // let options = { headers: headers};
+    return this.http.delete<any[]>(`${this._restaurantUrl}/${restaurant_id}/reviews/${review_id}`);
+  }
 }

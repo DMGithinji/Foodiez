@@ -36,32 +36,3 @@
   <div class="btn btn-outline-success" style = "float:right;" (click)=display()><a [routerLink]="['/restaurant']">Check Out</a></div>
 </div>
 </div>
-
-<!-- *ngIf="items.length > 0" -->
-<!-- <table class="table" >
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Sub Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of items">
-      <td>{{item.product.id}}</td>
-      <td>{{item.product.name}}</td>
-      <td>{{item.product.price}}</td>
-      <td>{{item.quantity}}</td>
-      <td>{{item.product.price * item.quantity}}</td>
-      <td>
-        <button (click)="remove(item.menu.id)" class="btn btn-default">Remove</button>
-      </td>
-    </tr>
-    <tr>
-        <td colspan="6" align="right">Total</td>
-        <td>{{total}}</td>
-    </tr>
-  </tbody>
-</table> -->

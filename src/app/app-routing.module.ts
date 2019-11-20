@@ -30,7 +30,9 @@ const routes: Routes = [
     component: HomeComponent},
   {
     path: 'restaurant/:id',
-    component: RestComponent},
+    component: RestComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: 'foodcart',
     component: FoodCartComponent,

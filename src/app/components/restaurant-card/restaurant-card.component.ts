@@ -36,7 +36,7 @@ export class RestaurantCardComponent implements OnInit {
       .subscribe((res)=> {
         this.restaurants = res;
         this.restrnts = this.restaurants.data
-        console.log(this.restrnts);     
+        // console.log(this.restrnts);     
         this.locations = this.restrnts.map((resto)=> resto.location);
         this.filteredLocations = this.locations.filter((x, i, a)=> a.indexOf(x) == i);
       },
@@ -53,7 +53,7 @@ export class RestaurantCardComponent implements OnInit {
     this.getRest()
     this.filteredRestaurants = this.restrnts.filter(resto => resto.location === location );
     this.restrnts = this.filteredRestaurants;
-    console.log(this.filteredRestaurants);
+    // console.log(this.filteredRestaurants);
 }
 
 }

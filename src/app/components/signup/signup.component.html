@@ -1,51 +1,76 @@
-<div class="py-5">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <span class="anchor" id="formLogin"></span>
 
-      <!-- form card login -->
-      <div class="card rounded-0">
-        <div class="card-header">
-          <h3 class="mb-0">Register</h3>
-        </div>
-        <div class="card-body">
-          <form class="form">
-            <div class="form-group">
-              <label for="uname1">Username</label>
-              <input type="text" [(ngModel)]="registerUserData.username" name="username" class="form-control rounded-0" required>
+
+<body>
+    <main>
+      <section class="intro">
+        <h3 class="intro__header m-3">
+          Welcome to the Foodies App
+        </h3>
+        <p class="intro__par">
+          Where you can explore and share your culinary experiences from restaurant's in Nairobi with other foodies.
+        </p>
+      </section>
+      <section class="form mt-3">
+        <div class="form__container">
+          <form action="#">
+              <div class="form__group">
+                  <input class="form__input" type="text" [(ngModel)]="registerUserData.username" name="username" placeholder="Username.." required>
+                  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="icon_error none">
+                    <g fill="none" fill-rule="evenodd">
+                      <circle fill="#FF7979" cx="12" cy="12" r="12" />
+                      <rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1" />
+                      <rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1" />
+                    </g>
+                  </svg>
+                </div>
+            <div class="form__group">
+              <input type="email" class="form__input" placeholder="Email.." id="inputEmail"
+              [(ngModel)]="registerUserData.email" name="email" required>
+              <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="icon_error none">
+                <g fill="none" fill-rule="evenodd">
+                  <circle fill="#FF7979" cx="12" cy="12" r="12" />
+                  <rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1" />
+                  <rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1" />
+                </g>
+              </svg>
             </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" [(ngModel)]="registerUserData.email" name="email" class="form-control rounded-0"  required>
-            </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input type="password" [(ngModel)]="registerUserData.password_hash" name="password_hash" class="form-control rounded-0"  required>
-            </div>
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="number" [(ngModel)]="registerUserData.phonenumber" name="phonenumber" class="form-control rounded-0"  required>
-            </div>
-            <div class="form-group">
-              <label>Location</label>
-              <input type="text" [(ngModel)]="registerUserData.location" name="location" class="form-control rounded-0"  required>
-            </div>
-            <!-- <div class="form-group">
-              <label>Role</label>
-              <input type="text" [(ngModel)]="registerUserData.role" name="role" class="form-control rounded-0" disabled value="User"  required>
-            </div> -->
-            <button type="button" (click)="registerUser()" class="btn btn-primary float-right">Register</button>
+            <div class="form__group">
+                <input type="password" class="form__input" placeholder="Password.." id="inputPassword"
+                  [(ngModel)]="registerUserData.password_hash" name="password_hash" required>
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="icon_error none">
+                  <g fill="none" fill-rule="evenodd">
+                    <circle fill="#FF7979" cx="12" cy="12" r="12" />
+                    <rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1" />
+                    <rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1" />
+                  </g>
+                </svg>
+              </div>
+                <div class="form__group">
+                    <input type="text" class="form__input" [(ngModel)]="registerUserData.phonenumber" name="phonenumber" placeholder="eg 0712345678" required>
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="icon_error none">
+                      <g fill="none" fill-rule="evenodd">
+                        <circle fill="#FF7979" cx="12" cy="12" r="12" />
+                        <rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1" />
+                        <rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1" />
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="form__group">
+                      <input type="text" class="form__input" placeholder="Location.." [(ngModel)]="registerUserData.location" name="location" required>
+                      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="icon_error none">
+                        <g fill="none" fill-rule="evenodd">
+                          <circle fill="#FF7979" cx="12" cy="12" r="12" />
+                          <rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1" />
+                          <rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1" />
+                        </g>
+                      </svg>
+                    </div>
           </form>
+          <button class="form__btn--submit" (click)="registerUser()">Sign Up</button>
+          <p class="h6 mb-3 font-weight-normal">Already have an account?</p>
+          <p class="h5 mb-3 font-weight-normal"><a routerLink="/login">Login</a></p>
         </div>
-        <!--/card-block-->
-        <p class="mt-5 mb-3 text-muted text-center">&copy; Foodiez | 2019</p>
-      </div>
-      <!-- /form card login -->
-
-    </div>
-  </div>
-</div>
-
-
-
-
+      </section>
+    </main>
+  </body>
+  
