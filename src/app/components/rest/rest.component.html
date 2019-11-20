@@ -1,130 +1,141 @@
-<section class="jumbotron jumbotron-fluid main-header text-center d-flex align-items-center sticky-content">
-  <div class="container header align-middle">
-    <h3 class="module-title">{{restaurant?.name}}</h3>
-    <p class="module-info">{{info?.description}}</p>
-    <hr>
-    <p class="module-info-2">We are located at : <strong>{{restaurant?.location}}</strong> <br>
-      where we're open from <strong>09:30am </strong> to <strong>10:30pm.</strong> <br>
-      You can also reach us at <strong>{{info?.contact}}.</strong></p>
-  </div>
-</section>
 
-<div class="bg pb-3">
-    <div class="container-fluid nav1 navbar-expand-sm navbar-light sticky-top" style="padding-top: 60px;">
-        <div class="navbar nav2 navbar-expand-sm menu-stuff">
-          <ul class="navbar-nav row">
-            <!-- to be displayed when user is not logged in-->
-            <li class="nav-item ml-3 mr-5 navlink">
-              <a class="nav-link" routerLink="#" (click)="Menu()">{{restaurant?.name}}'s &nbsp; Menu</a>
-            </li>
-            <li class="nav-item ml-3">
-              <a class="nav-link" routerLink="#" (click)="Reviews()">{{restaurant?.name}}'s &nbsp; Reviews</a>
-            </li>
-          </ul>
+<app-loading *ngIf="!restaurant || !foods|| !info"></app-loading>
+
+<div  *ngIf="restaurant && foods && info">
+    <section class="jumbotron jumbotron-fluid main-header text-center d-flex align-items-center sticky-content">
+        <div class="container header align-middle">
+          <h3 class="module-title">{{restaurant?.name}}</h3>
+          <p class="module-info">{{info?.description}}</p>
+          <hr>
+          <p class="module-info-2">We are located at : <strong>{{restaurant?.location}}</strong> <br>
+            where we're open from <strong>09:30am </strong> to <strong>10:30pm.</strong> <br> <br>
+            You can also reach us at <strong>{{info?.contact}}.</strong></p>
         </div>
-      </div>
+      </section>
       
-      <!--Beginning of menu-->
-      <div *ngIf=" hideRs " class="container jumbotron menu menu-stuff2">
-        <section id="popular" class="module">
-          <div class="container-fluid">
-            <!-- <button type="button" name="" id="add" class="btn btn-white"><a [routerLink]="['/foodcart', { id:food.id }]">Add</a></button> -->
-            <h3 class="module-title mt-3 mb-3 text-center">Breakfast Cuisines</h3>
-
-            <div *ngFor="let item of breakfast">
-              <div class="row">
-                <div class="menu">
-                  <div class="row">
-                    <div class="col-sm-10">
-                      <h4 class="menu-title">{{item.foods}}</h4>
-                      <div class="menu-detail">{{item.description}}</div>
-                    </div>
-                    <div class="col-sm-2 menu-price-detail">
-                      <h4 class="menu-price">Ksh {{item.price}}</h4>
-                      <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i>
-                    </div>
-                  </div>
-                </div>
+      <div class="bg pb-3">
+          <div class="container-fluid nav1 navbar-expand-sm navbar-light sticky-top" style="padding-top: 60px;">
+              <div class="navbar nav2 navbar-expand-sm menu-stuff">
+                <ul class="navbar-nav row">
+                  <!-- to be displayed when user is not logged in-->
+                  <li class="nav-item ml-3 mr-5 navlink">
+                    <a class="nav-link" (click)="Menu()">{{restaurant?.name}}'s &nbsp; Menu</a>
+                  </li>
+                  <li class="nav-item ml-3">
+                    <a class="nav-link" (click)="Reviews()">{{restaurant?.name}}'s &nbsp; Reviews</a>
+                  </li>
+                </ul>
               </div>
             </div>
-            <h3 class="module-title mt-3 mb-3 text-center">Lunch Cuisines</h3>
             
-
-            <div *ngFor="let item of lunch">
-              <div class="row">
-                <div class="menu">
-                  <div class="row">
-                    <div class="col-sm-10">
-                      <h4 class="menu-title">{{item.foods}}</h4>
-                      <div class="menu-detail">{{item.description}}</div>
-                    </div>
-                    <div class="col-sm-2 menu-price-detail">
-                      <h4 class="menu-price">Ksh {{item.price}}</h4>
-                      <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <h3 class="module-title mt-3 mb-3 text-center">Dinner Cuisines</h3>
-            <div *ngFor="let item of supper">
-              <div class="row">
-                <div class="menu">
-                  <div class="row">
-                    <div class="col-sm-10">
-                      <h4 class="menu-title">{{item.foods}}</h4>
-                      <div class="menu-detail">{{item.description}}</div>
-                    </div>
-                    <div class="col-sm-2 menu-price-detail">
-                      <h4 class="menu-price">Ksh {{item.price}}</h4>
-                      <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i>
+            <!--Beginning of menu-->
+            <div *ngIf=" hideRs " class="container jumbotron menu menu-stuff2">
+              <section id="popular" class="module">
+                <div class="container-fluid">
+                  <!-- <button type="button" name="" id="add" class="btn btn-white"><a [routerLink]="['/foodcart', { id:food.id }]">Add</a></button> -->
+                  <h3 class="module-title mt-3 text-center">Breakfast Cuisines</h3>
+      
+                  <div *ngFor="let item of breakfast">
+                    <div class="row">
+                      <div class="menu">
+                        <div class="row">
+                          <div class="col-sm-10">
+                            <h4 class="menu-title">{{item.foods}}</h4>
+                            <div class="menu-detail">{{item.description}}</div>
+                          </div>
+                          <div class="col-sm-2 menu-price-detail">
+                            <h4 class="menu-price">Ksh {{item.price}}</h4>
+                            <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  <h3 class="module-title mt-4 mb-3 text-center">Lunch Cuisines</h3>
+                  
+      
+                  <div *ngFor="let item of lunch">
+                    <div class="row">
+                      <div class="menu">
+                        <div class="row">
+                          <div class="col-sm-10">
+                            <h4 class="menu-title">{{item.foods}}</h4>
+                            <div class="menu-detail">{{item.description}}</div>
+                          </div>
+                          <div class="col-sm-2 menu-price-detail">
+                            <h4 class="menu-price">Ksh {{item.price}}</h4>
+                            <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i>
+      
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <h3 class="module-title mt-4 mb-3 text-center">Dinner Cuisines</h3>
+                  <div *ngFor="let item of supper">
+                    <div class="row">
+                      <div class="menu">
+                        <div class="row">
+                          <div class="col-sm-10">
+                            <h4 class="menu-title">{{item.foods}}</h4>
+                            <div class="menu-detail">{{item.description}}</div>
+                          </div>
+                          <div class="col-sm-2 menu-price-detail">
+                            <h4 class="menu-price">Ksh {{item.price}}</h4>
+                            <i class="material-icons md-48" [routerLink]="['/foodcart', { id:item.id }]">add_circle_line</i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+                </div><!-- .container -->
+              </section>
+            </div>
+            <!--End of menu-->
+            
+            <!--Beginning of Reviews-->
+            <div *ngIf="hideMR1" class=" container jumbotron menu menu-stuff2">
+              <div class="review" style="margin-bottom: 60px;">
+                <!-- <div class="form-group shadow-textarea">
+                  <h3 class="module-title mt-3 text-center">We would love to hear your feedback!</h3>
+                  <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"
+                    placeholder="Write review here..."></textarea>
+                </div> -->
+                
+
+                <form [formGroup]="reviewForm" autocomplete="off" novalidate (ngSubmit)="createReview(reviewForm.value)">
+                <textarea class="form-control z-depth-1" rows="3" placeholder="Write review here..." formControlName="review" id="review"></textarea>
+                <input type="number" formControlName="rating" id="rating">
+                <button type="submit" class="btn btn-dark" [disabled]="!reviewForm.valid">Submit</button>
+                </form>
+              </div>
+              <div *ngFor="let review of reviews" class="food-item">
+                <div class="card-body row">
+                  <h4 class="card-title col-md-9">{{review.user}}</h4>
+                  <p class="card-text col-md-3 text-right">{{review.posted}}</p>
+            
+                  <hr class='accent-1 d-inline-block mx-auto'>
+                  <p class="card-text col-md-9 text-left">{{review.review}}</p>
+                  <!-- <button type="button" name="" id="add" class="btn btn-white">Delete</button> -->
                 </div>
+                <hr>
               </div>
             </div>
-      
-          </div><!-- .container -->
-        </section>
+            <!--End of Reviews-->
+            
+            
+            <!--Beginning of Recipe-->
+            <div *ngIf="hideMR2" class="container jumbotron menu recipe-stuff">
+              <!-- <h4>{{recipe.recipeName}}</h4>
+                <hr>
+                <p>{{recipe.description}}</p> -->
+            </div>
+            <!--End of Recipe-->
       </div>
-      <!--End of menu-->
-      
-      <!--Beginning of Reviews-->
-      <div *ngIf="hideMR1" class=" container jumbotron menu review-stuff">
-        <div class="review" style="margin-bottom: 60px;">
-          <div class="form-group shadow-textarea">
-            <label for="exampleFormControlTextarea6">Write a review</label>
-            <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"
-              placeholder="Write review here..."></textarea>
-          </div>
-          <button type="button" name="" id="add" class="btn btn-white">Submit</button>
-        </div>
-        <div *ngFor="let review of reviews" class="food-item">
-          <div class="card-body row">
-            <h4 class="card-title col-md-9">{{review.user}}</h4>
-            <p class="card-text col-md-3 text-right">{{review.posted}}</p>
-      
-            <hr class='accent-1 d-inline-block mx-auto'>
-            <p class="card-text col-md-9 text-left">{{review.review}}</p>
-            <!-- <button type="button" name="" id="add" class="btn btn-white">Delete</button> -->
-          </div>
-          <hr>
-        </div>
-      </div>
-      <!--End of Reviews-->
       
       
-      <!--Beginning of Recipe-->
-      <div *ngIf="hideMR2" class="container jumbotron menu recipe-stuff">
-        <!-- <h4>{{recipe.recipeName}}</h4>
-          <hr>
-          <p>{{recipe.description}}</p> -->
-      </div>
-      <!--End of Recipe-->
+      
+      
+      <app-footer></app-footer>
 </div>
-
-
-
-
-<app-footer></app-footer>

@@ -2,7 +2,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,7 @@ import { MenuserviceService } from './services/menuservice.service'
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/tokeninterceptor.service';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 
@@ -46,7 +47,8 @@ import { TokenInterceptorService } from './services/tokeninterceptor.service';
     SuperAdminComponent,
     RestaurantCardComponent,
     FooterComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    LoadingComponent
 
   ],
   imports: [
@@ -54,6 +56,7 @@ import { TokenInterceptorService } from './services/tokeninterceptor.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
 
   ],
   providers: [RestaurantService, LocationRestaurantService, AuthService, MenuserviceService, AuthGuard,

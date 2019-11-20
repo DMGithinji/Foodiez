@@ -78,7 +78,7 @@ h3:after {
   display: block;
   height: 1px;
   width: 50%;
-  margin: 12px auto 20px;
+  margin: 12px auto 40px;
 }
 
 .menu-stuff {
@@ -230,4 +230,8 @@ h4:after {
   color: #333;
   -webkit-transition: 0.2s; /* Safari prior 6.1 */
   transition: 0.2s;
+}
+
+.btn-dark{
+  background-color: #121212;
 }

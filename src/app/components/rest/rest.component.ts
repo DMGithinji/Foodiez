@@ -1,3 +1,4 @@
+import { ReviewsService } from './../../services/reviews.service';
 import { RestaurantService } from './../../services/rests/restaurant.service';
 import { Review } from './../../services/reviews/reviews.model';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
@@ -5,7 +6,7 @@ import { Menu } from '../../services/menu/menu.model';
 import { Information } from '../../services/information/information.model';
 import { Recipe } from '../../services/recipes/recipes.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MenuserviceService } from '../../services/menuservice.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { MenuserviceService } from '../../services/menuservice.service';
   styleUrls: ['./rest.component.css']
 })
 export class RestComponent implements OnInit {
+  public id;
   public data: any;
   public restaurant: any;
   public infoData: any;
@@ -24,6 +26,8 @@ export class RestComponent implements OnInit {
   public lunch: any;
   public supper: any;
   public menus: Menu[];
+  public reviewForm: FormGroup;
+
 
 
   reviews = [
@@ -52,21 +56,22 @@ export class RestComponent implements OnInit {
       this.hideMR2 = true;    }
 
     constructor(
-      private menuserviceService: MenuserviceService,
       private _restaurant: RestaurantService,
       private route: ActivatedRoute,
+      private _review: ReviewsService
       // private router: Router
       ) { }
 
     ngOnInit() {
-      let id = this.route.snapshot.params['id'];
-      this.getRestaurant(id);
-      this.getRestaurantInfo(id);
-      this.getRestaurantFoods(id);
-      this.menus = this.menuserviceService.findAll();
-      console.log(this.menus);
+      this.id = this.route.snapshot.params['id'];
+      this.getRestaurant( this.id);
+      this.getRestaurantInfo( this.id);
+      this.getRestaurantFoods( this.id);
       // console.log(this.restaurant)
-
+      this.reviewForm = new FormGroup({
+        review: new FormControl('', [Validators.required]),
+        rating: new FormControl(''),
+      });
     }
 
     getRestaurant =(id)=>{
@@ -102,8 +107,31 @@ export class RestComponent implements OnInit {
       });
     }
 
+    public createReview = (reviewFormValue) => {
+      if (this.reviewForm.valid) {
+        this.postReview(reviewFormValue);
+      }
+    }
 
-
+    private postReview = (reviewFormValue)=>{
+      let newReview = {
+        restaurant_id: parseInt(this.id),
+        user_id: 1,
+        review: reviewFormValue.review,
+        rating: reviewFormValue.rating,
+        posted:  new Date()
+      }
+      console.log("The posted review is", newReview);
+      this._review.postReview(this.id, newReview)
+      .subscribe(res => {
+        alert("Posted review successfully")
+      },
+      (error => {
+        alert("Oops, something went wrong")
+        console.log(error);
+      })
+      );
+    }
 }
 
 

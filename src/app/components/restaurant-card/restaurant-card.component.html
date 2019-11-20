@@ -1,55 +1,56 @@
-<div class="container-fluid">
+    <div class="container-fluid">
 
-  <div class="moreHeader row">
-    
-    <div class="col-md-12" >
-        <div class="d-flex align-items-center" *ngIf="!filteredLocations"> 
+      <div class="moreHeader row">
+
+        <div class="col-md-12">
+          <div class="d-flex align-items-center" *ngIf="!filteredLocations">
             <strong>Loading...</strong>
             <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
           </div>
-        <div class="d-flex flex-row bd-highlight mb-3">
+          <div class="d-flex flex-row bd-highlight mb-3">
             <div>
-              <span class="mr-2 badge badge-pill badge-dark"  (click)=getRest() *ngIf="filteredLocations">All Restaurants</span>
+              <span class="mr-2 badge badge-pill badge-dark" (click)=getRest() *ngIf="filteredLocations">All
+                Restaurants</span>
             </div>
-            <div  *ngFor="let location of filteredLocations">
+            <div *ngFor="let location of filteredLocations">
               <span class="mr-2 badge badge-pill badge-dark" (click)=filterByLocation(location)>{{location}}</span>
             </div>
           </div>
 
-    </div>
-
-  </div>
-  <hr>
-</div>
-<!-- </section> -->
-<section id="more">
-  <div class="grid-container popular">
-    <div *ngFor="let res of restrnts">
-      <!-- Card Light -->
-      <div class="card" [routerLink]="['/restaurant',res.id]">
-
-        <!-- Card image -->
-        <div class="view overlay">
-          <img class="card-img-top" src="{{res.image_url}}" alt="Restaurant image ">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
         </div>
 
-        <!-- Card content -->
-        <a class="card-body">
-          <!-- Title -->
-          <h4 class="card-title">{{res.name}}</h4>
-          <hr>
-          <!-- Text -->
-          <p class="card-text">{{res.location}}</p>
-          <!-- Link -->
-
-        </a>
-
       </div>
-      <!-- Card Light -->
+      <hr>
     </div>
-  </div>
-</section>
-<!-- </section> -->
+    <!-- </section> -->
+    <section id="more">
+      <div class="grid-container popular">
+        <div *ngFor="let res of restrnts">
+          <!-- Card Light -->
+          <div class="card" [routerLink]="['/restaurant',res.id]">
+
+            <!-- Card image -->
+            <div class="view overlay">
+              <img class="card-img-top" src="{{res.image_url}}" alt="Restaurant image ">
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+
+            <!-- Card content -->
+            <a class="card-body">
+              <!-- Title -->
+              <h4 class="card-title">{{res.name}}</h4>
+              <hr>
+              <!-- Text -->
+              <p class="card-text">{{res.location}}</p>
+              <!-- Link -->
+
+            </a>
+
+          </div>
+          <!-- Card Light -->
+        </div>
+      </div>
+    </section>
+    <!-- </section> -->
