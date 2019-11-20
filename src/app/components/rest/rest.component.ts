@@ -28,7 +28,7 @@ export class RestComponent implements OnInit {
   public breakfast: any;
   public lunch: any;
   public supper: any;
-  public menus: Menu[];
+  public averageRating: number;
   public reviewForm: FormGroup;
   private user_id = localStorage.getItem('user_id');
   // private user = localStorage.getItem('user_id');
@@ -54,6 +54,7 @@ export class RestComponent implements OnInit {
     constructor(
       private _restaurant: RestaurantService,
       private route: ActivatedRoute,
+      private _router: Router,
       private _review: ReviewsService
       // private router: Router
       ) { }
@@ -108,8 +109,12 @@ export class RestComponent implements OnInit {
       this._review.getReviews(id)
       .subscribe(res => {
         this.reviewsData = res;
-        this.reviews = this.reviewsData.data;
+        this.reviews = this.reviewsData.data.reverse();
         console.log(`reviews- ${this.reviews}`);
+        if(!!this.reviews){
+          this.averageRating = Math.round((this.reviewsData.data.reduce((acc, item) => acc+= item.rating, 0))/this.reviewsData.data.length);
+          console.log(`rating- ${this.averageRating}`);
+        }
       });
     }
     rate=(rating)=>{
@@ -134,15 +139,21 @@ export class RestComponent implements OnInit {
       console.log("The posted review is", newReview);
       this._review.postReview(this.id, newReview)
       .subscribe(res => {
+        this.getReviews(this.id);
         alert("Posted review successfully")
       },
       (error => {
-        alert("Oops, something went wrong")
-        console.log(error);
+        if(!!this.user_id){
+          this._router.navigate(['login'])
+        }
+        else{
+          console.log(error);
+          alert("Oops, something went wrong");
+        }
       })
       );
     }
-
+    
     deleteReview= (review_id) => {
       this._review.deleteReview(review_id, this.user_id).subscribe(
         res => {
@@ -151,7 +162,7 @@ export class RestComponent implements OnInit {
         },
         error => {
           console.log(error);
-          alert("Oops, something went wrong")
+          alert("Oops, something went wrong");
         }
       ); 
     }

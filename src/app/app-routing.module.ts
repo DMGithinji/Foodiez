@@ -31,7 +31,6 @@ const routes: Routes = [
   {
     path: 'restaurant/:id',
     component: RestComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'foodcart',
