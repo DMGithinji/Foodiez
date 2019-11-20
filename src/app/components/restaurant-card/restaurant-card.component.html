@@ -9,10 +9,10 @@
           </div>
         <div class="d-flex flex-row bd-highlight mb-3">
             <div>
-              <span class="mr-2 badge badge-pill badge-primary"  (click)=getRest() *ngIf="filteredLocations">All Restaurants</span>
+              <span class="mr-2 badge badge-pill badge-dark"  (click)=getRest() *ngIf="filteredLocations">All Restaurants</span>
             </div>
             <div  *ngFor="let location of filteredLocations">
-              <span class="mr-2 badge badge-pill badge-primary" (click)=filterByLocation(location)>{{location}}</span>
+              <span class="mr-2 badge badge-pill badge-dark" (click)=filterByLocation(location)>{{location}}</span>
             </div>
           </div>
 

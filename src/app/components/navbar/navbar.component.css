@@ -4,4 +4,6 @@
 }
 nav {
     margin-bottom: 40px;
+    background-color: #fff !important;
+    border-bottom: solid 1px rgba(161, 161, 161, 0.4);
 }

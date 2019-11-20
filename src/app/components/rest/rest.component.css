@@ -1,26 +1,75 @@
 .main-header {
   margin-top: 40px;
-  background: url('https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/bd4c2537aa3799e345a397e7e4c9cbac.svg') no-repeat center center fixed;
+  background: url('/../assets/images/handwrite.jpg') no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   width: 100%;
-  height: 60vh;
+  height: 70vh;
   display: flex;
+  -webkit-box-shadow: inset 0px -7px 21px 2px rgba(6, 19, 23, 0.66);
+  -moz-box-shadow: inset 0px -7px 21px 2px rgba(6, 19, 23, 0.66);
+  box-shadow: inset 0px -7px 21px 2px rgba(6, 19, 23, 0.66);
 }
 
 .header {
-  background-color: #fdfdfd;
-  border: 1px solid #b8aba9;
-  width: 40%;
+  background-color: transparent;
+  /* border: 1px solid #b8aba9; */
+  width: 35%;
   text-transform: uppercase;
   color: rgb(83, 74, 73);
   letter-spacing: 2px;
   line-height: 60px;
   font-size: 2.2rem;
   font-weight: 800;
+
+  margin-top: -20px;
+  margin-left: 35%;
   padding-top: 20px;
+  transform: rotate(-4.5deg);
+
+
+  /* Legacy vendor prefixes that you probably don't need... */
+
+  /* Safari */
+  -webkit-transform: rotate(-4.5deg);
+
+  /* Firefox */
+  -moz-transform: rotate(-4.5deg);
+
+  /* IE */
+  -ms-transform: rotate(-4.5deg);
+
+  /* Opera */
+  -o-transform: rotate(-4.5deg);
+}
+
+@media only screen and (min-width: 1300px) {
+  .header {
+    margin-left: 35%;
+    background-color: rgb(255, 255, 253);
+    /* border: 1px solid #b8aba9; */
+  }
+}
+
+@media only screen and (max-width: 745px) {
+
+  .header {
+    background-color: #fff;
+    border: 1px solid #b8aba9;
+    width: 85%;
+    text-transform: uppercase;
+    color: rgb(83, 74, 73);
+    letter-spacing: 2px;
+    line-height: 60px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin: 0 auto;
+    margin-top: -20px;
+    padding-top: 20px;
+  }
+
 }
 
 h3:after {
@@ -33,23 +82,39 @@ h3:after {
 }
 
 .menu-stuff {
-  background: rgb(42, 42, 42);
   color: rgb(194, 194, 194);
+}
+
+.nav-link:hover a{
+  color: rgb(231, 192, 48)!important;
 }
 
 .menu-stuff h3:after {
   content: '';
-  background: rgb(44, 44, 44);
   display: block;
   height: 1px;
   width: 10%;
   margin: 12px auto 30px;
 }
+
 .jumbotron .header .lead {
   letter-spacing: 1px;
   line-height: 15px;
   font-size: 0.9rem;
   font-weight: 400;
+}
+
+.module-info {
+  font-size: 0.95rem !important;
+  line-height: 18px;
+  text-transform: none;
+}
+
+.module-info-2 {
+  font-size: 0.9rem !important;
+  line-height: 18px;
+  font-weight: 550;
+  text-transform: none;
 }
 
 @media only screen and (max-width: 745px) {
@@ -78,18 +143,22 @@ h3:after {
   }
 
 }
-.nav1{
+
+.nav1 {
   margin-top: -40px;
 }
-.nav1{
+
+.nav1 {
   font-size: 1.2em;
-  top:0;
+  top: 0;
 
 }
-.nav2{
+
+.nav2 {
   width: 85%;
   margin: 0 auto;
 }
+
 /*-Restaurant Menu------*/
 h4:after {
   content: '';
@@ -100,40 +169,65 @@ h4:after {
   margin: 12px 0px;
 }
 
-.menu{
+.menu {
   border-radius: 0;
-  background-color: #fbfbfb;
   width: 80%;
   margin: 0 auto;
   margin-bottom: 40px;
 
 }
 
-.nav-main .nav-item{
+.nav-main .nav-item {
   padding-left: 50px;
   margin: 0 auto;
 }
 
-.menu-stuff{
-  background-color: rgb(72, 73, 75, 0.8) !important;  
+.menu-stuff {
+  background-color: rgb(26, 26, 26) !important;
   /* border-radius: 10px; */
 
 }
-.menu-stuff a{
+
+.menu-stuff a {
   color: #fff !important;
   font-weight: 600;
 
 }
 
-.menu-stuff2{
-  background-color: rgba(255, 255, 255, 0.4) !important;  
-  border: solid 2px rgb(72, 73, 75, 0.8);
-  border-radius: 10px;
+.menu-stuff2 {
+  background-color: rgba(255, 255, 255, 1) !important;
+  border: solid 1px rgba(153, 153, 153, 0.8);
+  border-radius: none;
   margin-top: -10px;
 
 }
-.menu-stuff a{
+
+.menu-stuff a {
   color: #fff !important;
   font-weight: 600;
 
+}
+
+/*---------------------------------*/
+.bg {
+  /* The image used */
+  background: url("/../assets/images/28.jpg") no-repeat fixed;
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.material-icons{
+	color: rgb(231, 192, 48);
+}
+.material-icons:hover{
+  cursor: pointer;
+  color: #333;
+  -webkit-transition: 0.2s; /* Safari prior 6.1 */
+  transition: 0.2s;
 }

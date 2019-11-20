@@ -12,4 +12,13 @@ export class RestaurantService {
   getRestaurants() {
     return this.http.get<any>(this._restaurantUrl);
   }
+  getRestaurant(id) {
+    return this.http.get<any[]>(this._restaurantUrl+'/'+id);
+  }
+  getRestaurantInfo(id) {
+    return this.http.get<any[]>(this._restaurantUrl+'/'+id+'/information');
+  }
+  getRestaurantFoods(id) {
+    return this.http.get<any[]>(this._restaurantUrl+'/'+id+'/foods');
+  }
 }

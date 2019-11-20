@@ -2,7 +2,7 @@
 
 
 .moreHeader {
-  padding-top: 15px;
+  padding-top: 10px;
   width: 95%;
   margin: 0 auto;
   display: flex;
@@ -29,6 +29,13 @@ hr {
 .btn-light :onclick {
   background-color: #ffffff !important;
   border-radius: none;
+}
+
+.badge-dark{
+  background-color: #1d1d1d !important;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 13px;
 }
 
 

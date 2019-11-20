@@ -19,44 +19,34 @@ export class RestaurantCardComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private _restaurant: RestaurantService) {}
 
-  restaurant = [];
+  public restaurant;
   locations: [];
   filteredLocations: any[];
   rest: any[];
   filteredRestaurants: [];
   restrnts
-  restaurants: any[];
+  restaurants;
 
   ngOnInit() {
-    this._restaurant.getRestaurants()
-      .subscribe(
-        res => this.restaurant.push(res),
-        err => console.log(err)
-      );
       this.loadRestaurants();
   }
 
   loadRestaurants = () =>{
     this._restaurant.getRestaurants()
-      .subscribe((res:[])=> {
-        res => this.restaurant.push(res);
-        if(res){
-          this.rest = this.restaurant[0].data;
-          this.restrnts = this.rest; 
-          this.locations = this.restrnts.map((resto)=> resto.location); 
-          this.filteredLocations = this.locations.filter((x, i, a)=> a.indexOf(x) == i);
-          console.log(this.restrnts);     
-          console.log("filteredLocations", this.filteredLocations);     
-        }
+      .subscribe((res)=> {
+        this.restaurants = res;
+        this.restrnts = this.restaurants.data
+        console.log(this.restrnts);     
+        this.locations = this.restrnts.map((resto)=> resto.location);
+        this.filteredLocations = this.locations.filter((x, i, a)=> a.indexOf(x) == i);
       },
         err => console.log(err)
       );
   }
 
   getRest() {
-    this.restrnts = this.restaurant[0].data;
+    this.restrnts = this.restaurants.data;
     console.log(this.restrnts);
-    
   }
 
   filterByLocation(location) {
